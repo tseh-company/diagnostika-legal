@@ -215,6 +215,11 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
 .dd-list button:hover,.dd-list button.on{background:var(--band2);color:var(--navy)}
 .err{color:var(--red);font-size:13px;margin-top:6px;display:none}
 .err.on{display:block}
+/* авторы */
+.authors{margin-top:16px}
+.authors .names{display:flex;flex-wrap:wrap;gap:8px}
+.authors .names span{background:var(--band2);color:var(--navy);border-radius:999px;padding:7px 14px;font-size:14.5px;font-weight:600}
+.start .byline{margin-top:10px;font-size:13px;color:#AFC3EA;max-width:720px}
 /* переходные экраны */
 .block-intro{position:relative;overflow:hidden;padding:44px 42px}
 .bi-num{position:absolute;right:28px;top:10px;font-size:150px;font-weight:700;color:#EEF2F8;line-height:1;letter-spacing:-.04em;pointer-events:none}
@@ -266,6 +271,7 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
   <button class="btn-big" id="go"><span>Начать диагностику</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button class="resume" id="resume" style="display:none">Продолжить с места остановки</button>
   <button class="resume" id="lastrep" style="display:none">Мой последний отчет</button>
+  <p class="byline">Подготовлено слушателями программы «Директор юридической службы» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга»</p>
   <p class="fine">Ответы сохраняются в системе НИУ ВШЭ. Отчет рассчитывается в вашем браузере. Черновик хранится только на этом устройстве, пока вы не отправите ответы.</p>
 </div></section>
 
@@ -274,6 +280,11 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
     <div class="card"><div class="n">1</div><h3>Профиль компании</h3><p class="note">Несколько полей о компании и вашей роли. Они попадут в титул отчета.</p></div>
     <div class="card"><div class="n">2</div><h3>72 вопроса по одному</h3><p class="note">Выберите вариант, который точнее всего описывает устойчивую практику последних 6–12 месяцев. Можно вернуться назад и оставить комментарий.</p></div>
     <div class="card"><div class="n">3</div><h3>Отчет сразу</h3><p class="note">Индекс зрелости, профиль по 18 доменам, сильные стороны, ограничения, противоречия и дорожная карта на 12–18 месяцев. PDF и CSV.</p></div>
+  </div>
+  <div class="card authors">
+    <div class="kicker">Авторы диагностики</div>
+    <p style="margin:8px 0 14px">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга».</p>
+    <div class="names"><span>Васин Антон</span><span>Козак Оксана</span><span>Куницын Станислав</span><span>Макарова Юлия</span><span>Рожовецкий Кирилл</span><span>Тришина Ксения</span></div>
   </div>
   <div class="card rules">
     <h3>Как отвечать</h3>
@@ -484,6 +495,7 @@ function render(R, validation){
   </div>
   <div class="card"><h2>Признаки перехода на следующий уровень</h2><ul>${signs.slice(0,5).map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
   <div class="card"><p style="margin:0">Для подтверждённой диагностики сопоставьте ответы с доказательствами: положениями, картами процессов, SLA, отчётами, дашбордами, данными систем, протоколами комитетов, бюджетами, планами развития и результатами опроса внутренних заказчиков.</p></div>
+  <div class="card"><h3>Авторы диагностики</h3><p style="margin:0">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга». Авторы: Васин Антон, Козак Оксана, Куницын Станислав, Макарова Юлия, Рожовецкий Кирилл, Тришина Ксения.</p></div>
   <div class="actions"><button class="btn" onclick="window.print()">Скачать PDF</button><button class="btn ghost" id="csv2">Скачать CSV</button></div>`;
   document.getElementById('report-body').innerHTML=html;
   const dl=()=>downloadCsv(R); document.getElementById('csv').onclick=dl; document.getElementById('csv2').onclick=dl;
