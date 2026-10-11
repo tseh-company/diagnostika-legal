@@ -33,6 +33,8 @@ h3{font-size:17px;color:var(--navy);margin:0 0 8px;font-weight:700}
 #form-section{padding:6px 0 40px}
 #poll-host{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 20px 20px;min-height:200px}
 .loading{color:var(--gray);padding:24px 0}
+#poll-placeholder{font-size:0;line-height:0;height:0;overflow:hidden}
+#poll-host .pass-express-poll__h1{display:none}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:0;border-radius:8px;padding:12px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
 .btn:hover{background:var(--navy2)}
 .btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--navy)}
@@ -383,7 +385,10 @@ loadStruct().then(()=>{
   const s=document.createElement('script'); s.src='https://www.hse.ru/n/exp/widgets/widgetPassExpressPoll/'+POLL_ID+'.js';
   s.onload=()=>{ const l=document.getElementById('poll-loading'); if(l) l.remove(); };
   s.onerror=()=>{ document.getElementById('poll-loading').innerHTML='Не удалось загрузить форму. Проверьте подключение и обновите страницу.'; };
-  document.body.appendChild(s);
+  const host=document.getElementById('poll-host'); host.appendChild(s);
+  // виджет может смонтироваться в конец body: переносим его в рамку формы
+  const mo=new MutationObserver(()=>{ [...document.body.children].forEach(el=>{ if(el.tagName==='DIV'&&el.querySelector('.pass-express-poll')) host.appendChild(el); }); });
+  mo.observe(document.body,{childList:true});
 });
 </script>
 </body>
