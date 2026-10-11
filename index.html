@@ -616,7 +616,7 @@ function bindQuestion(st){
 /* проверка и отправка */
 function reviewHtml(){
   const qs=STEPS.filter(s=>s.type==='q'); const miss=qs.filter(s=>!ANS[s.q.id]); const unk=qs.filter(s=>/^Не знаю/.test(ANS[s.q.id]||'')).length; const na=qs.filter(s=>/^Не применимо/.test(ANS[s.q.id]||'')).length;
-  const c1=(POLL.textConsentProccessPersonalData||'').trim();
+  const c0=POLL.textConsentProccessPersonalData; const c1=String((c0&&typeof c0==='object'?c0.value:c0)||'').trim();
   return `<div class="qcard"><div class="el-tag">Последний шаг</div><h2>Проверьте и отправьте ответы</h2>
     <div class="summary-grid"><div><b>${qs.length-miss.length}</b>из ${qs.length} вопросов отвечено</div><div><b>${unk}</b>«Не знаю / недостаточно данных»</div><div><b>${na}</b>«Не применимо»</div></div>
     ${miss.length?`<div class="warn">Остались вопросы без ответа: ${miss.slice(0,12).map(s=>`<a href="#" data-go="${STEPS.indexOf(s)}">${s.n}</a>`).join(', ')}${miss.length>12?' и другие':''}. Ответьте на них, чтобы отправить диагностику.</div>`:''}
