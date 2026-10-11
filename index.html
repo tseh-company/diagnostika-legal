@@ -246,6 +246,88 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
   .qcard{padding:22px 18px}.qcard h2{font-size:20px}.opt{grid-template-columns:34px 1fr;padding:12px}.opt .k{width:34px;height:34px}
   .start .resume{margin:12px 0 0}
 }
+
+/* ===== адаптив ===== */
+.el-tag i{white-space:nowrap}
+.org .short{display:none}
+@media (max-width:1100px){ .start::after{right:-260px;opacity:.6} }
+@media (max-width:820px){
+  .wrap{padding:0 16px}
+  .site-top .wrap{min-height:54px}
+  .site-top img{height:26px}
+  .site-top .org{font-size:0}
+  .site-top .org b{font-size:13px;line-height:1.25}
+  .site-top .saved{display:none}
+  .start .wrap{padding-top:40px;padding-bottom:48px}
+  .start .lead{font-size:16px}
+  .stagebar{margin:24px 0 22px}
+  .start-meta{gap:10px 18px;font-size:14px}
+  .btn-big{width:100%;justify-content:center}
+  .start .resume{width:100%;margin:10px 0 0}
+  .how{padding:28px 0 40px}
+  #wizard{padding:16px 0 56px}
+  .wz-top{flex-direction:column;align-items:flex-start;gap:4px}
+  .wz-block{font-size:11.5px;line-height:1.35}
+  .blocks-nav{margin-bottom:18px}
+  .blocks-nav div.p0{width:28px}
+  .qcard{border-radius:16px}
+  .el-tag{flex-wrap:wrap;border-radius:12px;font-size:12.5px}
+  .qdesc{font-size:14.5px}
+  .opt .t{font-size:15px}
+  .opt-sec{min-width:0;flex-basis:100%}
+  .wz-nav{gap:10px}
+  .wz-nav .hint{display:none}
+  .wz-nav .btn-pri{flex:1}
+  .block-intro{padding:28px 22px}
+  .bi-num{font-size:96px;right:14px;top:6px;opacity:.7}
+  .bi-num span{font-size:30px}
+  .bi-title{font-size:25px!important;max-width:calc(100% - 70px)}
+  .bi-what{font-size:15.5px}
+  /* отчет */
+  #report .card{padding:18px 16px}
+  .rep-head .actions{width:100%}
+  .rep-head .actions .btn{flex:1;justify-content:center}
+  .meta-grid{grid-template-columns:1fr 1fr}
+  .index-box{grid-template-columns:1fr!important}
+  .index-num{padding:18px}
+  .index-num .v{font-size:46px}
+  .scale{grid-template-columns:1fr 1fr}
+  .heat{grid-template-columns:repeat(2,1fr)}
+  .blocks5{grid-template-columns:1fr 1fr}
+  table.t.stack thead{display:none}
+  table.t.stack,table.t.stack tbody,table.t.stack tr,table.t.stack td{display:block;width:100%}
+  table.t.stack tr{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px;background:#fff}
+  table.t.stack tr:nth-child(even) td{background:none}
+  table.t.stack td{border:0;padding:4px 0;text-align:left!important;white-space:normal}
+  table.t.stack td[data-l]::before{content:attr(data-l);display:block;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+  table.t.stack td.num:first-child{display:none}
+  #report div[style*="overflow-x"]{overflow:visible!important}
+  table.t.stack.prof tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:10px 12px;margin-bottom:8px}
+  table.t.stack.prof td{padding:0}
+  table.t.stack.prof td[data-l]::before{display:none}
+  table.t.stack.prof td:nth-child(2){grid-column:1/-1;font-weight:600;color:var(--navy)}
+  table.t.stack.prof td:nth-child(3){grid-column:1;font-size:13px;color:var(--gray)}
+  table.t.stack.prof td:nth-child(3)::after{content:" балла"}
+  table.t.stack.prof td:nth-child(4){grid-column:1;font-size:13px;color:var(--gray)}
+  table.t.stack.prof td:nth-child(5){grid-column:2;grid-row:2/4;align-self:center}
+}
+.rl .ln{display:none}
+@media (max-width:600px){ #report svg[role=img]{width:128%;max-width:none;margin-left:-14%} #report .card{overflow:hidden} .rl .lf{display:none} .rl .ln{display:inline;font-weight:700} .rl{font-size:22px} }
+@media (max-width:480px){
+  .start h1{font-size:28px}
+  .stagebar div{padding:10px 12px}
+  .stagebar div span{font-size:14px}
+  .fgrid{gap:14px}
+  .meta-grid{grid-template-columns:1fr}
+  .qcard{padding:20px 16px}
+  .qcard h2{font-size:19px}
+  .opt{grid-template-columns:30px 1fr;gap:10px;padding:11px 12px 11px 10px}
+  .opt .k{width:30px;height:30px;font-size:15px;border-radius:8px}
+  .chip{font-size:14px;padding:8px 13px}
+  .summary-grid b{font-size:22px}
+}
+@media (min-width:1600px){ .wrap{max-width:1180px} .start h1{font-size:52px} }
+
 @media print{.site-top,.start,.how,#wizard{display:none!important}}
 </style>
 </head>
@@ -428,7 +510,7 @@ function radar(D){
   const W=680,H=460,cx=W/2,cy=H/2+4,R=155,n=18; const ang=i=>-Math.PI/2+i*2*Math.PI/n; const pt=(i,v)=>[cx+R*(v-0)/4*Math.cos(ang(i)), cy+R*(v-0)/4*Math.sin(ang(i))];
   let g='';
   [1,2,3,4].forEach(l=>{ const pts=[...Array(n)].map((_,i)=>pt(i,l).join(',')).join(' '); g+=`<polygon points="${pts}" fill="none" stroke="#D7D9DD" stroke-width="1"/>`; g+=`<text x="${cx+3}" y="${cy-R*l/4+4}" font-size="10" fill="#8A919C">${l}</text>`; });
-  D.forEach((d,i)=>{ const [x,y]=pt(i,4); g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#E5E7EA"/>`; const [lx,ly]=pt(i,4.55); const anc=Math.abs(lx-cx)<8?'middle':lx>cx?'start':'end'; g+=`<text x="${lx}" y="${ly+4}" font-size="11.5" fill="#3A4250" text-anchor="${anc}">${d.id}. ${SHORT[d.id]}</text>`; });
+  D.forEach((d,i)=>{ const [x,y]=pt(i,4); g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#E5E7EA"/>`; const [lx,ly]=pt(i,4.55); const anc=Math.abs(lx-cx)<8?'middle':lx>cx?'start':'end'; g+=`<text class="rl" x="${lx}" y="${ly+4}" font-size="11.5" fill="#3A4250" text-anchor="${anc}"><tspan class="lf">${d.id}. ${SHORT[d.id]}</tspan><tspan class="ln">${d.id}</tspan></text>`; });
   const pts=D.map((d,i)=>pt(i,d.v==null?0:d.v).join(',')).join(' ');
   g+=`<polygon points="${pts}" fill="rgba(15,44,104,.18)" stroke="#0F2C68" stroke-width="2"/>`;
   D.forEach((d,i)=>{ if(d.v==null) return; const [x,y]=pt(i,d.v); const col=d.v<2?'#B23A48':d.v<2.75?'#B7791F':'#2E7D4F'; g+=`<circle cx="${x}" cy="${y}" r="4" fill="${col}"/>`; });
@@ -442,7 +524,7 @@ function render(R, validation){
   const P=R.profile||{}; const st=R.stage; const date=new Date().toLocaleDateString('ru-RU');
   const strongTxt = d => `Используйте практику домена «${SHORT[d.id]}» как опору для подтягивания слабых доменов: её механизмы (правила, роли, данные) можно перенести в зоны роста.`;
   const critTxt = d => `Балл ${fmt(d.v)}, стадия: ${d.stage.toLowerCase()}. ${TEMPLATES[d.stage]||''}`;
-  const critShort = d => `Балл ${fmt(d.v)}, стадия: ${d.stage.toLowerCase()}. ${(TEMPLATES[d.stage]||'').split('. ')[0]}.`;
+  const critShort = d => `Балл ${fmt(d.v)}, стадия: ${d.stage.toLowerCase()}. ${(TEMPLATES[d.stage]||'').split('. ')[0].replace(/\.$/,'')}.`;
   const main = R.crit[0];
   const next = st ? STAGES[Math.min(3, STAGES.indexOf(st)+1)] : null;
   const crit5=R.crit.slice(0,5);
@@ -477,7 +559,7 @@ function render(R, validation){
   <div class="card">
     <h2>Профиль зрелости</h2>
     ${radar(R.D)}<h3 style="margin-top:18px">Тепловая карта</h3><div class="heat">${heat}</div><h3 style="margin-top:18px">Средние баллы пяти блоков</h3><div class="blocks5">${blocks}</div>
-    <table class="t" style="margin-top:18px"><thead><tr><th>№</th><th>Элемент</th><th class="num">Балл</th><th>Стадия</th><th>Статус</th></tr></thead><tbody>${rows}</tbody></table>
+    <table class="t prof" style="margin-top:18px"><thead><tr><th>№</th><th>Элемент</th><th class="num">Балл</th><th>Стадия</th><th>Статус</th></tr></thead><tbody>${rows}</tbody></table>
   </div>
   <div class="two">
     <div class="card"><h2>Сильные стороны</h2>${R.strengths.length? R.strengths.map(d=>`<div class="list-item"><h4>${esc(SHORT[d.id])} · ${fmt(d.v)}</h4><p>${strongTxt(d)}</p></div>`).join('') : '<p class="note">Доменов с баллом не ниже 2,75 нет.</p>'}</div>
@@ -498,6 +580,7 @@ function render(R, validation){
   <div class="card"><h3>Авторы диагностики</h3><p style="margin:0">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга». Авторы: Васин Антон, Козак Оксана, Куницын Станислав, Макарова Юлия, Рожовецкий Кирилл, Тришина Ксения.</p></div>
   <div class="actions"><button class="btn" onclick="window.print()">Скачать PDF</button><button class="btn ghost" id="csv2">Скачать CSV</button></div>`;
   document.getElementById('report-body').innerHTML=html;
+  document.querySelectorAll('#report table.t').forEach(tb=>{ const hs=[...tb.querySelectorAll('thead th')].map(th=>th.textContent.trim()); tb.classList.add('stack'); tb.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(hs[i]&&i>0) td.setAttribute('data-l',hs[i]); })); });
   const dl=()=>downloadCsv(R); document.getElementById('csv').onclick=dl; document.getElementById('csv2').onclick=dl;
   document.getElementById('report').style.display='block';
   document.getElementById('report').scrollIntoView({behavior:'smooth'});
