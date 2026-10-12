@@ -217,6 +217,7 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
 .err.on{display:block}
 /* авторы */
 .authors{margin-top:16px}
+.lbl{display:none}
 .authors .names{display:flex;flex-wrap:wrap;gap:8px}
 .authors .with{margin:12px 0 0;font-size:14.5px;color:var(--graphite)}
 .authors .with b{color:var(--navy);font-weight:600}
@@ -301,12 +302,12 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
   table.t.stack tr{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px;background:#fff}
   table.t.stack tr:nth-child(even) td{background:none}
   table.t.stack td{border:0;padding:4px 0;text-align:left!important;white-space:normal}
-  table.t.stack td[data-l]::before{content:attr(data-l);display:block;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+  table.t.stack td .lbl{display:block;font-size:11.5px;line-height:1.4;color:var(--muted);letter-spacing:.05em;font-weight:600;font-kerning:none;font-feature-settings:'kern' 0}
   table.t.stack td.num:first-child{display:none}
   #report div[style*="overflow-x"]{overflow:visible!important}
   table.t.stack.prof tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:10px 12px;margin-bottom:8px}
   table.t.stack.prof td{padding:0}
-  table.t.stack.prof td[data-l]::before{display:none}
+  table.t.stack.prof td .lbl{display:none}
   table.t.stack.prof td:nth-child(2){grid-column:1/-1;font-weight:600;color:var(--navy)}
   table.t.stack.prof td:nth-child(3){grid-column:1;font-size:13px;color:var(--gray)}
   table.t.stack.prof td:nth-child(3)::after{content:" балла"}
@@ -355,7 +356,7 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
   <button class="btn-big" id="go"><span>Начать диагностику</span><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button class="resume" id="resume" style="display:none">Продолжить с места остановки</button>
   <button class="resume" id="lastrep" style="display:none">Мой последний отчет</button>
-  <p class="byline">Авторы: Оксана Козак и Станислав Куницын, слушатели программы «Директор юридической службы», в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга»</p>
+  <p class="byline">Авторы: Оксана Козак и Станислав Куницын, слушатели программы «Директор юридической службы», в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга». Консультант: Геворг Малашенко, директор Института юридического менеджмента ВШЮА НИУ ВШЭ</p>
   <p class="fine">Ответы сохраняются в системе НИУ ВШЭ. Отчет рассчитывается в вашем браузере. Черновик хранится только на этом устройстве, пока вы не отправите ответы.</p>
 </div></section>
 
@@ -370,6 +371,7 @@ textarea.f:focus,input.f:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgb
     <p style="margin:8px 0 14px">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга».</p>
     <div class="names"><span>Козак Оксана</span><span>Куницын Станислав</span></div>
     <p class="with"><b>При участии:</b> Васин Антон, Макарова Юлия, Рожовецкий Кирилл, Тришина Ксения</p>
+    <p class="with"><b>Консультант:</b> Малашенко Геворг Тевосович, DBA, директор Института юридического менеджмента ВШЮА НИУ ВШЭ</p>
   </div>
   <div class="card rules">
     <h3>Как отвечать</h3>
@@ -580,10 +582,10 @@ function render(R, validation){
   </div>
   <div class="card"><h2>Признаки перехода на следующий уровень</h2><ul>${signs.slice(0,5).map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
   <div class="card"><p style="margin:0">Для подтверждённой диагностики сопоставьте ответы с доказательствами: положениями, картами процессов, SLA, отчётами, дашбордами, данными систем, протоколами комитетов, бюджетами, планами развития и результатами опроса внутренних заказчиков.</p></div>
-  <div class="card"><h3>Авторы диагностики</h3><p style="margin:0">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга». Авторы: Козак Оксана, Куницын Станислав. При участии: Васин Антон, Макарова Юлия, Рожовецкий Кирилл, Тришина Ксения.</p></div>
+  <div class="card"><h3>Авторы диагностики</h3><p style="margin:0">Диагностика подготовлена слушателями программы Executive Master in Management «Директор юридической службы: партнер в цифровой трансформации и развитии бизнеса» в рамках проекта «Комплексная трансформация юридической службы многопрофильного холдинга». Авторы: Козак Оксана, Куницын Станислав. При участии: Васин Антон, Макарова Юлия, Рожовецкий Кирилл, Тришина Ксения. Консультант: Малашенко Геворг Тевосович, DBA, директор Института юридического менеджмента ВШЮА НИУ ВШЭ.</p></div>
   <div class="actions"><button class="btn" onclick="window.print()">Скачать PDF</button><button class="btn ghost" id="csv2">Скачать CSV</button></div>`;
   document.getElementById('report-body').innerHTML=html;
-  document.querySelectorAll('#report table.t').forEach(tb=>{ const hs=[...tb.querySelectorAll('thead th')].map(th=>th.textContent.trim()); tb.classList.add('stack'); tb.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(hs[i]&&i>0) td.setAttribute('data-l',hs[i]); })); });
+  document.querySelectorAll('#report table.t').forEach(tb=>{ const hs=[...tb.querySelectorAll('thead th')].map(th=>th.textContent.trim()); tb.classList.add('stack'); tb.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(hs[i]&&i>0){ td.setAttribute('data-l',hs[i]); const l=document.createElement('span'); l.className='lbl'; l.textContent=hs[i].toLocaleUpperCase('ru'); td.prepend(l); } })); });
   const dl=()=>downloadCsv(R); document.getElementById('csv').onclick=dl; document.getElementById('csv2').onclick=dl;
   document.getElementById('report').style.display='block';
   document.getElementById('report').scrollIntoView({behavior:'smooth'});
